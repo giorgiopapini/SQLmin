@@ -14,10 +14,7 @@ Buffer * create_buffer() {
 void populate(Buffer * p_buffer) {
     size_t bytes = getline(&p_buffer->content, &p_buffer->len, stdin);
     
-    if (bytes <= 0) {
-        raise(INPUT_ERROR);
-        exit(EXIT_FAILURE);
-    }
+    if (bytes <= 0) raise(INPUT_ERROR, 1);
     
     p_buffer->content[bytes - 1] = 0;
     p_buffer->len = bytes - 1;

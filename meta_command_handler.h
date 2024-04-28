@@ -2,6 +2,7 @@
 #define meta_command_handler_h
 
 #include "buffer.h"
+#include "table.h"
 
 #define META_COMMAND_START_CHAR '.'
 
@@ -12,7 +13,7 @@ typedef enum {
 } MetaCommandResult;
 
 
-int buffer_is_metacommand(Buffer *, const char *);
-MetaCommandResult do_meta_command(Buffer *);
+int buffer_is_metacommand(Buffer *, const char *metacommand);
+MetaCommandResult do_meta_command(Buffer *, Table *);
 
 #endif

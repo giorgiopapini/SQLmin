@@ -10,8 +10,9 @@ int buffer_is_metacommand(Buffer * p_buffer, const char *metacommand) {
     return 0;
 }
 
-MetaCommandResult do_meta_command(Buffer *p_buffer) {
+MetaCommandResult do_meta_command(Buffer *p_buffer, Table *p_table) {
     if (buffer_is_metacommand(p_buffer, "exit")) {
+        db_close(p_table);
         deallocate(p_buffer);
         exit(EXIT_SUCCESS);
     }
