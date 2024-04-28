@@ -18,9 +18,10 @@
 void prompt() { printf("db > "); };
 
 int main(int argc, char *argv[]) {
-    if (argc < 2) raise(NO_FILENAME_ERROR, 1);
-    char *filename = argv[1];
+    //if (argc < 2) raise(NO_FILENAME_ERROR, 1);
+    //char *filename = argv[1];
 
+    char *filename = "mydb.db";
     Table * table = db_open(filename);
     Buffer * input_buffer = create_buffer();
     

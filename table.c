@@ -21,7 +21,7 @@ void db_close(Table *p_table) {
     Pager *pager = p_table->pager;
     uint32_t num_full_pages = p_table->num_rows / ROWS_PER_PAGE;
 
-    for (uint32_t i = 0; i < num_full_pages; i ++) {
+    for (uint32_t i = 0; i <= num_full_pages; i ++) {
         if (NULL == pager->pages[i]) continue;
         
         pager_flush(pager, i, PAGE_SIZE);

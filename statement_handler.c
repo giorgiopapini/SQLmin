@@ -22,8 +22,9 @@ PrepareResult prepare_insert(Buffer *p_buffer, Statement *p_statement) {
     
     // Using a copy of the buffer content ensure that strtok() does not modify the original buffer content, which may be
     // valuable for future use inside the session (like error handling and formatting)
-    char *buff_content_copy;
-    memcpy(buff_content_copy, &(p_buffer->content), sizeof(char) * p_buffer->len);
+    size_t content_len = strlen(p_buffer->content) + 1;  // including null terminator
+    char buff_content_copy[content_len];
+    memcpy(buff_content_copy, p_buffer->content, content_len);
 
     char *keyword = strtok(buff_content_copy, " ");
     char *id_str = strtok(NULL, " ");
