@@ -52,7 +52,6 @@ void pager_flush(Pager *p_pager, uint32_t page_num, uint32_t size) {
     if (NULL == p_pager->pages[page_num]) raise(FLASHED_NULL_PAGE_ERROR, 1);
 
     off_t offset = lseek(p_pager->file_descriptor, page_num * PAGE_SIZE, SEEK_SET);
-
     if (-1 == offset) raise(SEEKING_ERROR, 1, errno);
     
     size_t written_bytes = write(p_pager->file_descriptor, p_pager->pages[page_num], size);

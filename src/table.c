@@ -38,7 +38,7 @@ void db_close(Table *p_table) {
 }
 
 void * find_row_addr(Table *p_table, uint32_t row_num) {  // return the memory address in which inserting the row
-    uint32_t page_num = row_num / ROWS_PER_PAGE;
+    uint32_t page_num = row_num / ROWS_PER_PAGE;  // 0/13 = 0; 1/13 = 0; 12/13 = 0; 13/13 = 1; 25/13 = 1; 26/13 = 2; ... 
     void *page = get_page(p_table->pager, page_num);
 
     uint32_t row_offset = row_num % ROWS_PER_PAGE;
